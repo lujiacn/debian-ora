@@ -12,7 +12,7 @@ ENV ORACLE_HOME=/usr/lib/oracle/instantclient_$POSTFIX \
 
 RUN apt-get update && \
     apt-get -y install zip libaio1 && \
-    unzip /distrib/instantclient-basic-linux.x64-$VERSION.zip -d /usr/lib/oracle && \
+    unzip /distrib/instantclient-basiclite-linux.x64-$VERSION.zip -d /usr/lib/oracle && \
     unzip /distrib/instantclient-sdk-linux.x64-$VERSION.zip -d /usr/lib/oracle && \
     unzip /distrib/instantclient-sqlplus-linux.x64-$VERSION.zip -d /usr/lib/oracle && \
     rm -rf /distrib
