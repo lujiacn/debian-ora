@@ -1,4 +1,4 @@
-FROM golang:1.9
+FROM golang:latest
 
 ADD distrib /distrib
 
