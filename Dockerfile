@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM debian:10-slim
 
 ADD distrib /distrib
 
@@ -14,16 +14,10 @@ RUN apt-get update && \
     apt-get -y install zip libaio1 && \
     unzip /distrib/instantclient-basiclite-linux.x64-$VERSION.zip -d /usr/lib/oracle && \
     unzip /distrib/instantclient-sdk-linux.x64-$VERSION.zip -d /usr/lib/oracle && \
-    unzip /distrib/instantclient-sqlplus-linux.x64-$VERSION.zip -d /usr/lib/oracle && \
     rm -rf /distrib
 
 COPY oci8.pc /usr/local/lib/pkgconfig/oci8.pc
 
 # add alias to go so we don't need to provide compilation flags every time
 RUN ln -s $(find $ORACLE_HOME -name 'libclntsh.so.*') $ORACLE_HOME/libclntsh.so
-
-RUN go get gopkg.in/rana/ora.v4
-
-#RUN echo 'alias go="CGO_LDFLAGS=-L$ORACLE_HOME CGO_CFLAGS=-I$ORACLE_HOME/sdk/include go"' >> /root/.bashrc
-#RUN CGO_LDFLAGS=-L$ORACLE_HOME CGO_CFLAGS=-I$ORACLE_HOME/sdk/include go get gopkg.in/rana/ora.v4
 
