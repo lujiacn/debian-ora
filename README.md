@@ -1,2 +1,2 @@
 # debian-ora
-Docker Image with Oracle Instant Client installed 
+Docker Image with Oracle Instant Client installed. 
